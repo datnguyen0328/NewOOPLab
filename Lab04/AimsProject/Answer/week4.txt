@@ -1,0 +1,49 @@
+1. Which classes are aggregates of other classes? Checking all constructors of whole classes if they 
+initialize for their parts?
+- The CompactDisc class aggregates Track objects. 
+- The Store class aggregates Media objects.
+- The Cart class aggregates Media objects.
+
+ 2. Alternatively, to compare items in the cart, instead of using Comparator, we can use the 
+Comparable interface and override the compareTo()method. You can refer to the Java docs to see the 
+information of this interface. 
+Suppose we are taking this Comparable interface approach.
+- What class should implement the Comparable interface?
+- In those classes, how should you implement the compareTo()method be to reflect the ordering that we 
+want?
+- Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this 
+Comparable interface approach?
+- Suppose the DVDs has a different ordering rule from the other media types, that is by title, then decreasing 
+length, then cost. How would you modify your code to allow this?
+
+Answer:
+- The class whose objects need to be compared should implement the Comparable interface.
+
+- In the implementing class, the compareTo() method should be implemented to reflect the desired ordering. This method should 
+compare the relevant fields of the objects and return a negative integer if the current instance is less than the other, 0 if 
+they are equal, and a positive integer if the current instance is greater than the other.
+
+- With the Comparable interface approach, we can only have one ordering rule for the items. The compareTo() method defines the 
+single way of comparing objects. To accommodate a different ordering rule for DVDs compared to other media types, we can 
+introduce a conditional statement within the compareTo() method of the DVD class. This statement would check the type of the 
+other object being compared and apply the specific ordering logic for DVDs, considering title, decreasing length, and cost. 
+This way, the comparison and ordering can be customized for DVDs while maintaining the standard behavior for other media types.
+
+- 
+public class DVDComparator implements Comparator<DVD> {
+    @Override
+    public int compare(DVD dvd1, DVD dvd2) {
+        // First sort by title
+        int result = dvd1.getTitle().compareTo(dvd2.getTitle());
+        
+        if (result == 0) { // If titles are equal, sort by decreasing length
+            result = Integer.compare(dvd2.getLength(), dvd1.getLength());
+            
+            if (result == 0) { // If lengths are also equal, sort by cost
+                result = Double.compare(dvd1.getCost(), dvd2.getCost());
+            }
+        }
+        
+        return result;
+    }
+}

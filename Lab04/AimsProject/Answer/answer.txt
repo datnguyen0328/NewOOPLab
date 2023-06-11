@@ -1,0 +1,12 @@
+1. Try to add a method addDigitalVideoDisc which allows to pass an arbitrary number of arguments for dvd. Compare to an array parameter. What do you prefer in this case?
+- I prefer to pass an arbitrary number of arguments as it is more convenient and more flexible comparing to the other choice. 
+
+2. Is java a Pass by Value or a Pass by Reference Programming language
+- Java is a pass by value programming language.
+
+3. After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
+- The title of the two objects still remain because when we pass objects to the method, Java creates a copy of references and pass it to the method, but they still point to the same memory reference. So that the objects from calling method as well its reference will remain unaffected.
+
+4. After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is
+the title of the JungleDVD changed?
+- The title of the JungleDVD changed because the method changed its title by having directly accessed to the attribute "title" of the original object.
