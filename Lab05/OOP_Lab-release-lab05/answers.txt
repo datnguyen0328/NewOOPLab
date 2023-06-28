@@ -1,0 +1,2 @@
+Q: Aims class not update to catch exceptions ?
+A: When Aims class isn't updated to catch exceptions play() methods are called, the exceptions will stacks up and at a point of time the program will be forced stop (terminated).

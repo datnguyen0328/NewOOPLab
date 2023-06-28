@@ -1,0 +1,21 @@
+Q: Aggregation
+A: CompactDisc aggregates Track, Cart aggregates Media, Store aggregates Media
+
+Q: Passing an object not an instance of Media
+A: equals() returns false (due to the if statement)
+
+Q: Inheritance
+A: Book, CompactDisc and DigitalVideoDisc inherit Media, objects book, cd, dvd are also instances of Media.
+	-> No error
+
+Q: Implement Interface
+A: "Media" implements "Comparable" interface
+
+Q: compareTo() function
+A: The compareTo() method needs to return a negative integer, zero, and positive integer when the object is less than, equal to, or greater than the target respectively.
+
+Q: Can we have two ordering rules of the item
+A: No since Comparable interface is used for internal comparison and can be implemented only once by Media"
+
+Q: If DVDs has a different ordering rule from the other media types. How to allow this?
+A: compareTo() method will be override to match the rules (DigitalVideoDisc)
